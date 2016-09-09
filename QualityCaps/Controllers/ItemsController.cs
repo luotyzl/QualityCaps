@@ -124,8 +124,16 @@ namespace QualityCaps.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Edit(Item item)
+        public async Task<ActionResult> Edit(int? id,Item newItem)
         {
+            Item item = await db.Items.FindAsync(id);
+            if (id != null)
+            {
+                item.Name = newItem.Name;
+                item.CatagorieId = newItem.CatagorieId;
+                item.Price = newItem.Price;
+                item.ItemPictureUrl = newItem.ItemPictureUrl;
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(item).State = EntityState.Modified;
@@ -137,7 +145,7 @@ namespace QualityCaps.Controllers
         }
 
         // GET: Items/Delete/5
-         [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)

@@ -287,6 +287,7 @@
     <Content Include="Content\bootswatch.less" />
     <Content Include="Content\datepicker.less" />
     <Content Include="Content\variables.less" />
+    <None Include="Properties\PublishProfiles\publish.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\card.js" />
     <Content Include="Scripts\d3.js" />
@@ -309,7 +310,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
