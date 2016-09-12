@@ -22,6 +22,9 @@ namespace QualityCaps.Models
         [DisplayName("Catagorie")]
         public int CatagorieId { get; set; }
 
+        [DisplayName("Supplier")]
+        public int SupplierId { get; set; }
+
         [Required(ErrorMessage = "An Item Name is required")]
         [StringLength(160)]
         public string Name { get; set; }
@@ -68,6 +71,7 @@ namespace QualityCaps.Models
         public string ItemPictureUrl { get; set; }
 
         public virtual Catagorie Catagorie { get; set; }
+        public virtual Supplier Supplier { get; set; }
         public virtual List<OrderDetail> OrderDetails { get; set; }
     }
 }

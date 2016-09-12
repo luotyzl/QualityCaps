@@ -9,7 +9,7 @@ namespace QualityCaps.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(QualityCaps.Models.ApplicationDbContext context)
@@ -18,11 +18,9 @@ namespace QualityCaps.Migrations
             var roleManager = new RoleManager<IdentityRole>(roleStore);
             var userStore = new UserStore<ApplicationUser>(context);
             var userManager = new UserManager<ApplicationUser>(userStore);
-            var user = new ApplicationUser { UserName = "admin@gmail.com" };
-            var guestUser = new ApplicationUser { UserName = "guest@guest.com" };
+            var user = new ApplicationUser { UserName = "admin" };
 
-            userManager.Create(user, "abc123"); //strong password!#@$!
-            userManager.Create(guestUser, "guest1"); //strong password!#@$!
+            userManager.Create(user, "123456"); //admin password!#@$!
 
             roleManager.Create(new IdentityRole { Name = "Admin" });
             userManager.AddToRole(user.Id, "Admin");

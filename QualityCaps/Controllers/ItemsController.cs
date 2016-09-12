@@ -37,6 +37,8 @@ namespace QualityCaps.Controllers
             {
                 items = items.Where(s => s.Name.ToUpper().Contains(searchString.ToUpper())
                                        || s.Catagorie.Name.ToUpper().Contains(searchString.ToUpper()));
+                items = items.Where(s => s.Name.ToUpper().Contains(searchString.ToUpper())
+                                       || s.Supplier.Name.ToUpper().Contains(searchString.ToUpper()));
             }
             switch (sortOrder)
             {

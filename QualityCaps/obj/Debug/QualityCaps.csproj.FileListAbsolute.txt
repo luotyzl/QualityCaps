@@ -1,16 +1,3 @@
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.first.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.currentv1.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.second.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.vCurrent.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.v70.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.current.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.current1.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.currentv19.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.currentv89.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.updatedentity.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.data.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.currentv88.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.csproj.GenerateResource.Cache
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\bin\roslyn\csc.exe
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll

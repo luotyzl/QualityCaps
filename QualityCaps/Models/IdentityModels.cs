@@ -39,6 +39,7 @@ namespace QualityCaps.Models
         public DbSet<Item> Items { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Catagorie> Catagories { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 

@@ -180,9 +180,7 @@ namespace QualityCaps
             var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
             const string name = "admin@gmail.com";
-            const string guestName = "guest@guest.com";
             const string password = "abc123";
-            const string guestPass = "guest1";
             const string roleName = "Admin";
 
             //Create Role Admin if it does not exist
@@ -199,14 +197,6 @@ namespace QualityCaps
                 adminUser = new ApplicationUser { UserName = name, Email = name };
                 var result = userManager.Create(adminUser, password);
                 result = userManager.SetLockoutEnabled(adminUser.Id, false);
-            }
-
-            var guestUser = userManager.FindByName(guestName);
-            if (guestUser == null)
-            {
-                guestUser = new ApplicationUser { UserName = guestName, Email = guestName };
-                var result = userManager.Create(guestUser, guestPass);
-                result = userManager.SetLockoutEnabled(guestUser.Id, false);
             }
 
             // Add user admin to Role Admin if not already added
