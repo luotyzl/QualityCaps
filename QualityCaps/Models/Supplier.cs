@@ -10,7 +10,6 @@ namespace QualityCaps.Models
 {
     public class Supplier
     {
-        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         [Key]
         [DisplayName("Catagorie ID")]
         public int ID { get; set; }

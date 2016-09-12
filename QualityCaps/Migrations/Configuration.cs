@@ -5,14 +5,14 @@ using QualityCaps.Models;
 
 namespace QualityCaps.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<QualityCaps.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(QualityCaps.Models.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             var roleStore = new RoleStore<IdentityRole>(context);
             var roleManager = new RoleManager<IdentityRole>(roleStore);
@@ -23,9 +23,7 @@ namespace QualityCaps.Migrations
             userManager.Create(user, "123456"); //admin password!#@$!
 
             roleManager.Create(new IdentityRole { Name = "Admin" });
-            userManager.AddToRole(user.Id, "Admin");
-
-
+           // userManager.AddToRole(user.Id, "Admin");
 
             //  This method will be called after migrating to the latest version.
 

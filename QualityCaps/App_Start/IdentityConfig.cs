@@ -179,8 +179,8 @@ namespace QualityCaps
         {
             var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
-            const string name = "admin@gmail.com";
-            const string password = "abc123";
+            const string name = "luotyzl@gmail.com";
+            const string password = "luoyishan13";
             const string roleName = "Admin";
 
             //Create Role Admin if it does not exist

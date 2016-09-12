@@ -3,7 +3,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-
 namespace QualityCaps.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
@@ -35,7 +34,7 @@ namespace QualityCaps.Models
         {
         }
 
-
+        public DbSet<Color> Colors { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Catagorie> Catagories { get; set; }

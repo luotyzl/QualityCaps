@@ -85,6 +85,9 @@
             Catagorie
         </th>
         <th>
+            Supplier
+        </th>
+        <th>
             @Html.ActionLink("Item Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
@@ -101,6 +104,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Catagorie.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)

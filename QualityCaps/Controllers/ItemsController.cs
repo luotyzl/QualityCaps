@@ -85,6 +85,8 @@ namespace QualityCaps.Controllers
         public ActionResult Create()
         {
             ViewBag.CatagorieId = new SelectList(db.Catagories, "ID", "Name");
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "ID", "Name");
+
             return View();
         }
 
@@ -102,6 +104,7 @@ namespace QualityCaps.Controllers
             }
 
             ViewBag.CatagorieId = new SelectList(db.Catagories, "ID", "Name", item.CatagorieId);
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "ID", "Name", item.SupplierId);
             return View(item);
         }
 
@@ -119,6 +122,7 @@ namespace QualityCaps.Controllers
                 return HttpNotFound();
             }
             ViewBag.CatagorieId = new SelectList(db.Catagories, "ID", "Name", item.CatagorieId);
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "ID", "Name", item.SupplierId);
             return View(item);
         }
 
@@ -143,6 +147,7 @@ namespace QualityCaps.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CatagorieId = new SelectList(db.Catagories, "ID", "Name", item.CatagorieId);
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "ID", "Name", item.SupplierId);
             return View(item);
         }
 

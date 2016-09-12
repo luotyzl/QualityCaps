@@ -75,7 +75,6 @@ C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\bin\Microsoft.Owin.Securi
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.dll
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.pdb
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.csprojResolveAssemblyReference.cache
 C:\Users\luoy15\Desktop\QualityCaps\QualityCaps\bin\roslyn\csc.exe
 C:\Users\luoy15\Desktop\QualityCaps\QualityCaps\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\luoy15\Desktop\QualityCaps\QualityCaps\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -154,3 +153,7 @@ C:\Users\luoy15\Desktop\QualityCaps\QualityCaps\bin\Microsoft.Owin.Security.Micr
 C:\Users\luoy15\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.csprojResolveAssemblyReference.cache
 C:\Users\luoy15\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.dll
 C:\Users\luoy15\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.pdb
+C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.m1.resources
+C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.additemcolume.resources
