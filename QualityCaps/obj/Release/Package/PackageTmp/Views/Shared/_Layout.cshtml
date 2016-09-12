@@ -23,6 +23,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Email","Index","Email")</li>
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <li class="dropdown">
@@ -30,6 +31,7 @@
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Orders", "Index", "Orders")</li>
                                 <li>@Html.ActionLink("Catagorie", "Index", "Catagories")</li>
+                                <li>@Html.ActionLink("Suppliers","Index","Suppliers")</li>
                                 @*                                            <li>@Html.ActionLink("Analytics", "Index", "Analytics")</li>*@
                                 <li class="divider"></li>
                                 <li class="dropdown-header">Roles Admin</li>

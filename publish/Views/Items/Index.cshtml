@@ -16,7 +16,7 @@
             var recordToAdd = $(this).attr("data-id");
             if (recordToAdd != '') {
                 // Perform the ajax post
-                $.post("../Views/ShoppingCart/AddToCart", { "id": recordToAdd },
+                $.post("~/../ShoppingCart/AddToCart", { "id": recordToAdd },
                     function (data) {
                         $('#cart-status').text(data.CartCount);
                     });
@@ -114,8 +114,7 @@
             <td>
                 <a href="#" class="AddLink"
                    data-id="@item.ID" data-toggle="modal" data-target="#myModal">
-                    Add
-                    to cart
+                    Add to cart
                 </a>
                 <!--@Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = item.ID }, new { htmlAttributes = new { @data_toggle = "modal", @data_target = "#myModal" } })--> |
                 @Html.ActionLink("Details", "Details", new { id = item.ID })
