@@ -11,7 +11,7 @@ namespace QualityCaps.Models
     public class Supplier
     {
         [Key]
-        [DisplayName("Catagorie ID")]
+        [DisplayName("Supplier ID")]
         public int ID { get; set; }
 
         [Required(ErrorMessage = "A Supplier Name is required")]
