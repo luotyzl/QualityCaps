@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System;
 using System.Linq;
-using System.Security.Claims;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -74,7 +74,7 @@ namespace QualityCaps.Controllers
 
             // This doen't count login failures towards lockout only two factor authentication
             // To enable password failures to trigger lockout, change to shouldLockout: true
-            var result = await SignInHelper.PasswordSignIn(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInHelper.PasswordSignIn(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -152,13 +152,11 @@ namespace QualityCaps.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+//                    await SendEmailAsync(user.Id, user.Email);
                     //ViewBag.Link = callbackUrl;
                     return View("DisplayEmail");
 
@@ -330,7 +328,32 @@ namespace QualityCaps.Controllers
             return RedirectToAction("Register", "Account");
         }
 
+        public async Task<bool> SendEmailAsync(string id,string Email)
+        {
+            MailAddress toAddress = new MailAddress(Email);
+            MailAddress fromAddress = new MailAddress("wad@unitec.com");
+            MailMessage message = new MailMessage(fromAddress, toAddress);
+            message.Subject = "Registration Confirm";
+            message.Body = "Your registration is complete! Thank you!" +"\r\n" +"Your UserId is " + id;
+            SmtpClient mailClient = new SmtpClient();
 
+            try
+            {
+                //mailClient.Host = "localhost"; //not working anymore
+                mailClient.Host = "mail.unitec.ac.nz";
+                mailClient.Send(message);
+                return true;
+            }
+            catch (SmtpException smtpEx)
+            {
+                Response.Write("Email is not sent due to system error: " + smtpEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Error: " + ex.ToString());
+            }
+            return false;
+        }
 
         protected override void Dispose(bool disposing)
         {

@@ -157,3 +157,4 @@ C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Mig
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.csproj.GenerateResource.Cache
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.additemcolume.resources
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.a.resources

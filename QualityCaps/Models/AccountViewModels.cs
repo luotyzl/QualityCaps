@@ -4,19 +4,6 @@ using System.ComponentModel.DataAnnotations;
 namespace QualityCaps.Models
 {
 
-    public class GuestViewModel
-    {
-        [Required]
-        [Display(Name = "Email")]
-        public string GuestAcct { get; set; }
-
-        [Required]
-        [Display(Name = "Password")]
-        public string GuestPassword { get; set; }
-
-    }
-
-
     public class SendCodeViewModel
     {
         public string SelectedProvider { get; set; }
@@ -48,9 +35,8 @@ namespace QualityCaps.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,9 +50,18 @@ namespace QualityCaps.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "PhoneNumber")]
+        public string PhoneNumber { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
