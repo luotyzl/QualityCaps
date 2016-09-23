@@ -153,8 +153,10 @@ C:\Users\luoy15\Desktop\QualityCaps\QualityCaps\bin\Microsoft.Owin.Security.Micr
 C:\Users\luoy15\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.csprojResolveAssemblyReference.cache
 C:\Users\luoy15\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.dll
 C:\Users\luoy15\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.pdb
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.m1.resources
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.csproj.GenerateResource.Cache
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.additemcolume.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.csprojResolveAssemblyReference.cache
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.a.resources
+C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\OpenOrderFramework.Migrations.first.resources
+C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\OpenOrderFramework.Migrations.v70.resources
+C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\OpenOrderFramework.Migrations.current1.resources
+C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\OpenOrderFramework.Migrations.currentv89.resources
+C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\OpenOrderFramework.Migrations.updatedentity.resources
+C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\OpenOrderFramework.Migrations.currentv88.resources

@@ -208,17 +208,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609120726552_m1.cs" />
-    <Compile Include="Migrations\201609120726552_m1.Designer.cs">
-      <DependentUpon>201609120726552_m1.cs</DependentUpon>
+    <Compile Include="Migrations\201405240343114_first.cs" />
+    <Compile Include="Migrations\201405240343114_first.Designer.cs">
+      <DependentUpon>201405240343114_first.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609120735160_additemcolume.cs" />
-    <Compile Include="Migrations\201609120735160_additemcolume.Designer.cs">
-      <DependentUpon>201609120735160_additemcolume.cs</DependentUpon>
+    <Compile Include="Migrations\201405301503445_v70.cs" />
+    <Compile Include="Migrations\201405301503445_v70.Designer.cs">
+      <DependentUpon>201405301503445_v70.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609222303541_a.cs" />
-    <Compile Include="Migrations\201609222303541_a.Designer.cs">
-      <DependentUpon>201609222303541_a.cs</DependentUpon>
+    <Compile Include="Migrations\201405301617131_current1.cs" />
+    <Compile Include="Migrations\201405301617131_current1.Designer.cs">
+      <DependentUpon>201405301617131_current1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405301731339_currentv89.cs" />
+    <Compile Include="Migrations\201405301731339_currentv89.Designer.cs">
+      <DependentUpon>201405301731339_currentv89.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405301842148_updatedentity.cs" />
+    <Compile Include="Migrations\201405301842148_updatedentity.Designer.cs">
+      <DependentUpon>201405301842148_updatedentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406031742294_currentv88.cs" />
+    <Compile Include="Migrations\201406031742294_currentv88.Designer.cs">
+      <DependentUpon>201406031742294_currentv88.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -391,14 +403,23 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609120726552_m1.resx">
-      <DependentUpon>201609120726552_m1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405240343114_first.resx">
+      <DependentUpon>201405240343114_first.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609120735160_additemcolume.resx">
-      <DependentUpon>201609120735160_additemcolume.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405301503445_v70.resx">
+      <DependentUpon>201405301503445_v70.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609222303541_a.resx">
-      <DependentUpon>201609222303541_a.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405301617131_current1.resx">
+      <DependentUpon>201405301617131_current1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405301731339_currentv89.resx">
+      <DependentUpon>201405301731339_currentv89.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405301842148_updatedentity.resx">
+      <DependentUpon>201405301842148_updatedentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406031742294_currentv88.resx">
+      <DependentUpon>201406031742294_currentv88.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
