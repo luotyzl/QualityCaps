@@ -9,10 +9,12 @@ using QualityCaps.Models;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using NLog.Fluent;
 using RestSharp.Authenticators;
 
 namespace QualityCaps.Controllers
@@ -53,11 +55,12 @@ namespace QualityCaps.Controllers
             try
             {
                     order.Username = User.Identity.Name;
-                    order.Email = User.Identity.Name;
-                    order.OrderDate = DateTime.Now;
                     var currentUserId = User.Identity.GetUserId();
-
-                    if (order.SaveInfo && !order.Username.Equals("guest@guest.com"))
+                    var userEmail = storeDB.Users.Find(currentUserId).Email;
+                    order.Email = userEmail;
+                    order.OrderDate = DateTime.Now;
+                    
+                    if (order.SaveInfo && !order.Username.Equals(" "))
                     {
                         
                         var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
@@ -69,7 +72,7 @@ namespace QualityCaps.Controllers
                         currentUser.City = order.City;
                         currentUser.Country = order.Country;
                         currentUser.State = order.State;
-                        currentUser.Phone = order.Phone;
+                        currentUser.PhoneNumber = order.Phone;
                         currentUser.PostalCode = order.PostalCode;
                         currentUser.FirstName = order.FirstName;
 
@@ -97,7 +100,7 @@ namespace QualityCaps.Controllers
                         new { id = order.OrderId });
                 
             }
-            catch
+            catch(DbEntityValidationException e)
             {
                 //Invalid - redisplay with errors
                 return View(order);

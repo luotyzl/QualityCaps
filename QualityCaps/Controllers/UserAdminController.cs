@@ -64,7 +64,7 @@ namespace QualityCaps.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var user = await UserManager.FindByIdAsync(id);
-
+            
             ViewBag.RoleNames = await UserManager.GetRolesAsync(user.Id);
 
             return View(user);
@@ -86,7 +86,7 @@ namespace QualityCaps.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = userViewModel.Email, Email = userViewModel.Email };
+                var user = new ApplicationUser { UserName = userViewModel.UserName, Email = userViewModel.Email,PhoneNumber = userViewModel.PhoneNumber, IsAvailable = true};
                 var adminresult = await UserManager.CreateAsync(user, userViewModel.Password);
 
                 //Add User to the selected Roles 
