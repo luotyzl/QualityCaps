@@ -213,7 +213,8 @@ namespace QualityCaps
         Success,
         LockedOut,
         RequiresTwoFactorAuthentication,
-        Failure
+        Failure,
+        AccountDisabled
     }
 
     // These help with sign and two factor (will possibly be moved into identity framework itself)
@@ -336,6 +337,10 @@ namespace QualityCaps
             if (user == null)
             {
                 return SignInStatus.Failure;
+            }
+            if (!user.IsAvailable)
+            {
+                return SignInStatus.AccountDisabled;
             }
             if (await UserManager.IsLockedOutAsync(user.Id))
             {

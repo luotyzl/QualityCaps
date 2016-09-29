@@ -136,12 +136,14 @@ namespace QualityCaps.Controllers
             {
                 Id = user.Id,
                 Email = user.Email,
+                IsAvailable = user.IsAvailable,
                 RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
                 {
                     Selected = userRoles.Contains(x.Name),
                     Text = x.Name,
                     Value = x.Name
                 })
+                
             });
         }
 
@@ -161,7 +163,7 @@ namespace QualityCaps.Controllers
 
                 user.UserName = editUser.Email;
                 user.Email = editUser.Email;
-
+                user.IsAvailable = editUser.IsAvailable;
                 var userRoles = await UserManager.GetRolesAsync(user.Id);
 
                 selectedRole = selectedRole ?? new string[] { };

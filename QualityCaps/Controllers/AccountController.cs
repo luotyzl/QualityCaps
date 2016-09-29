@@ -83,6 +83,9 @@ namespace QualityCaps.Controllers
                     return View("Lockout");
                 case SignInStatus.RequiresTwoFactorAuthentication:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl });
+                case SignInStatus.AccountDisabled:
+                    ModelState.AddModelError("", "Your Account has been disabled, please contact system administrator.");
+                    return View(model);
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
@@ -152,7 +155,7 @@ namespace QualityCaps.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber};
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber,IsAvailable = true};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

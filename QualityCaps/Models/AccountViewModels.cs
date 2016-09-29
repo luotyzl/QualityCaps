@@ -45,6 +45,9 @@ namespace QualityCaps.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        public bool IsAvailable { get; set; }
+
     }
 
     public class RegisterViewModel
@@ -73,6 +76,9 @@ namespace QualityCaps.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public bool IsAvailable { get; set; }
+
     }
 
     public class ResetPasswordViewModel

@@ -17,6 +17,7 @@ namespace QualityCaps.Models
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public string Phone { get; set; }
+        public bool IsAvailable { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

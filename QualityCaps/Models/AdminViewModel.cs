@@ -21,6 +21,7 @@ namespace QualityCaps.Models
         [EmailAddress]
         public string Email { get; set; }
 
+        public bool IsAvailable { get; set; }
         public IEnumerable<SelectListItem> RolesList { get; set; }
     }
 }

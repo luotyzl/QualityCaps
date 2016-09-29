@@ -232,6 +232,10 @@
     <Compile Include="Migrations\201406031742294_currentv88.Designer.cs">
       <DependentUpon>201406031742294_currentv88.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609290321540_addcolumn.cs" />
+    <Compile Include="Migrations\201609290321540_addcolumn.Designer.cs">
+      <DependentUpon>201609290321540_addcolumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -420,6 +424,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201406031742294_currentv88.resx">
       <DependentUpon>201406031742294_currentv88.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609290321540_addcolumn.resx">
+      <DependentUpon>201609290321540_addcolumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
