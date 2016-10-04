@@ -1,6 +1,7 @@
 ﻿@model PagedList.IPagedList<QualityCaps.Models.Item>
 @using System.Web.Mvc.Html
 @using PagedList.Mvc;
+@using QualityCaps.Models
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
@@ -54,40 +55,39 @@
 </div>
 
 
-
+<body>
 
 <h2>Order some caps.</h2>
-@if (Request.IsAuthenticated && User.IsInRole("Admin"))
-{
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-}
-@foreach (var catagory in ViewBag.CatagoriyId)
-{
-    <div class="col-lg-2">
-        <p>
-            catagory
-        </p>
+    <br />
+    <div>
+        <a class="btn btn-info btn-sm" style="width: 15%" href="@Url.Action("Index", "Items", new {currentCatagory = "0"})">All</a>
+        @foreach (var catagory in ViewBag.Catagories)
+        {
+            <a class="btn btn-info btn-sm" style="width: 15%" href="@Url.Action("Index", "Items", new {currentCatagory = catagory})">@catagory.Substring(1)</a>
+        }
     </div>
-}
-<br/>
-<br/>
+    <br />
+    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    }
 <div class="bs-docs-section">
     <div class="row">
-            @using (Html.BeginForm("Index", "Items", FormMethod.Get))
-            {
-                
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon">Find: </span>
-                        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-                        <span class="input-group-btn">
-                            <input type="submit" class="btn btn-info btn-sm" value="Search" />
-                        </span>
-                    </div>
+        @using (Html.BeginForm("Index", "Items", FormMethod.Get))
+        {
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">Find: </span>
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                    <span class="input-group-btn">
+                        <input type="submit" class="btn btn-info btn-sm" value="Search" />
+                    </span>
                 </div>
-            }
+            </div>
+        }
     </div>
 </div>
 <table class="table">
@@ -126,14 +126,14 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                <img src="@Url.Action("RenderImage", new { id = item.ID})" style="width: 100px;height: 100px"/>
+                <img src="@Url.Action("RenderImage", new {id = item.ID})" style="width: 100px; height: 100px" />
             </td>
             <td>
                 <a href="#" class="AddLink"
                    data-id="@item.ID" data-toggle="modal" data-target="#myModal">
                     Add to cart
                 </a>
-                <!--@Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = item.ID }, new { htmlAttributes = new { @data_toggle = "modal", @data_target = "#myModal" } })--> |
+                <!--@Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new {id = item.ID}, new {htmlAttributes = new {@data_toggle = "modal", @data_target = "#myModal"}})--> |
                 @Html.ActionLink("Details", "Details", new { id = item.ID })
                 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                 {
@@ -146,6 +146,8 @@
     }
 
 </table>
+</body>
+
 <br />
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 

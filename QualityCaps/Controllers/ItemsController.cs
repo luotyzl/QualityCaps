@@ -17,19 +17,19 @@ namespace QualityCaps.Controllers
         // GET: Items
         public ActionResult Index(string sortOrder, string currentFilter, string searchString,string currentCatagory, int? page)
         {
-            ViewBag.CurrentCatagory = string.IsNullOrWhiteSpace(currentCatagory) ? "All" : currentCatagory;
+
+            var catagoryId = string.IsNullOrWhiteSpace(currentCatagory)
+                ? 0
+                : Convert.ToInt32(currentCatagory.Substring(0, 1));
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
             var catagories = new List<string>();
-            var catagoriyId = new List<int>();
             foreach (var catagory in db.Catagories)
             {
-                catagories.Add(catagory.Name);
-                catagoriyId.Add(catagory.ID);
+                catagories.Add(catagory.ID + catagory.Name);
             }
             ViewBag.Catagories = catagories;
-            ViewBag.CatagoriyId = catagoriyId;
             if (searchString != null)
             {
                 page = 1;
@@ -40,9 +40,13 @@ namespace QualityCaps.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
-
             var items = from i in db.Items
-                           select i;
+                        select i;
+            if (catagoryId != 0)
+            {
+                items = items.Where(s => s.CatagorieId == catagoryId);
+            }
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 items = items.Where(s => s.Name.ToUpper().Contains(searchString.ToUpper())
