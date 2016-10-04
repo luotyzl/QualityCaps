@@ -21,6 +21,7 @@
                         } else {
                             $('#item-count-' + data.DeleteId).text(data.ItemCount);
                         }
+                        $('#subtotal').text(data.SubTotal);
                         $('#cart-total').text(data.CartTotal);
                         $('#update-message').text(data.Message);
                         $('#cart-status').text(data.CartCount);
@@ -32,6 +33,11 @@
 <h3>
     <em>Review</em> your cart:
 </h3>
+<br/>
+<div class="top-right">
+    <a style="text-align: right">@Html.ActionLink("Clear", "RemoveAllItems")</a>
+</div>
+<br />
 
 @{
 
@@ -83,10 +89,14 @@
                     }
                     <tr class="info">
                         <td>
+                            SubTotal
+                        </td>
+                        <td id="subtotal">
+                            @Model.SubTotal
+                        </td>
+                        <td>
                             Total
                         </td>
-                        <td></td>
-                        <td></td>
                         <td id="cart-total">
                             @Model.CartTotal
                         </td>

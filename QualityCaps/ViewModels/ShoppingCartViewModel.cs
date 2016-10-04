@@ -8,6 +8,7 @@ namespace QualityCaps.ViewModels
     {
         [Key]
         public List<Cart> CartItems { get; set; }
+        public decimal SubTotal { get; set; }
         public decimal CartTotal { get; set; }
     }
 }

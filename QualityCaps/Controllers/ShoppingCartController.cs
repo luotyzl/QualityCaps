@@ -19,11 +19,21 @@ namespace QualityCaps.Controllers
             var viewModel = new ShoppingCartViewModel
             {
                 CartItems = cart.GetCartItems(),
+                SubTotal = cart.GetSubTotal(),
                 CartTotal = cart.GetTotal()
             };
             // Return the view
             return View(viewModel);
         }
+
+        public ActionResult RemoveAllItems()
+        {
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+            cart.EmptyCart();
+            var results = new ShoppingCartViewModel();
+            return RedirectToAction("Index");
+        }
+
         //
         // GET: /Store/AddToCart/5
         [HttpPost]
@@ -44,6 +54,7 @@ namespace QualityCaps.Controllers
                 Message = Server.HtmlEncode(addedItem.Name) +
                     " has been added to your shopping cart.",
                 CartTotal = cart.GetTotal(),
+                SubTotal = cart.GetSubTotal(),
                 CartCount = cart.GetCount(),
                 ItemCount = count,
                 DeleteId = id
@@ -75,6 +86,7 @@ namespace QualityCaps.Controllers
             {
                 Message = "One (1) "+ Server.HtmlEncode(itemName) +
                     " has been removed from your shopping cart.",
+                SubTotal = cart.GetSubTotal(),
                 CartTotal = cart.GetTotal(),
                 CartCount = cart.GetCount(),
                 ItemCount = itemCount,
