@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201610041119015_removecreditcard.Designer.cs">
       <DependentUpon>201610041119015_removecreditcard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610042317582_addcolumn1.cs" />
+    <Compile Include="Migrations\201610042317582_addcolumn1.Designer.cs">
+      <DependentUpon>201610042317582_addcolumn1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -434,6 +438,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610041119015_removecreditcard.resx">
       <DependentUpon>201610041119015_removecreditcard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610042317582_addcolumn1.resx">
+      <DependentUpon>201610042317582_addcolumn1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

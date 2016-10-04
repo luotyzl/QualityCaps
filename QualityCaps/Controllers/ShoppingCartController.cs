@@ -48,7 +48,7 @@ namespace QualityCaps.Controllers
             // Add it to the shopping cart
             var cart = ShoppingCart.GetCart(this.HttpContext);
 
-            int count = cart.AddToCart(addedItem);
+            int count = cart.AddToCart(addedItem,color);
 
             // Display the confirmation message
             var results = new ShoppingCartRemoveViewModel

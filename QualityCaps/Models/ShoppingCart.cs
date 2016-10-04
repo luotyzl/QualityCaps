@@ -25,12 +25,12 @@ namespace QualityCaps.Models
             return GetCart(controller.HttpContext);
         }
 
-        public int AddToCart(Item item)
+        public int AddToCart(Item item,string color)
         {
             // Get the matching cart and item instances
             var cartItem = storeDB.Carts.SingleOrDefault(
                 c => c.CartId == ShoppingCartId
-                && c.ItemId == item.ID);
+                && c.ItemId == item.ID && c.Color == color);
 
             if (cartItem == null)
             {
@@ -39,6 +39,7 @@ namespace QualityCaps.Models
                 {
                     ItemId = item.ID,
                     CartId = ShoppingCartId,
+                    Color = color,
                     Count = 1,
                     DateCreated = DateTime.Now
                 };

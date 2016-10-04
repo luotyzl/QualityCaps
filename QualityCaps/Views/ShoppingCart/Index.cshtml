@@ -55,7 +55,19 @@
                     <thead>
                         <tr>
                             <th>
+                                Item ID
+                            </th>
+                            <th>
                                 Item Name
+                            </th>
+                            <th>
+                                Catagory
+                            </th>
+                            <th>
+                                Supplier
+                            </th>
+                            <th>
+                                Color
                             </th>
                             <th>
                                 Price (each)
@@ -70,7 +82,19 @@
                     {
                         <tr id="row-@item.ItemId" >
                             <td>
-                                @Html.ActionLink(item.Item.Name, "Details", "Store", new { id = item.ID }, null)
+                                @item.Item.ID
+                            </td>
+                            <td>
+                                @item.Item.Name
+                            </td>
+                            <td>
+                                @item.Item.Catagorie.Name
+                            </td>
+                            <td>
+                                @item.Item.Supplier.Name
+                            </td>
+                            <td>
+                                @item.Color
                             </td>
                             <td>
                                 @item.Item.Price
@@ -95,7 +119,7 @@
                             @Model.SubTotal
                         </td>
                         <td>
-                            Total
+                            Total(GST:15%)
                         </td>
                         <td id="cart-total">
                             @Model.CartTotal
