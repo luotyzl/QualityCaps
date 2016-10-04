@@ -1,4 +1,5 @@
 ﻿@model PagedList.IPagedList<QualityCaps.Models.Item>
+@using System.Web.Mvc.Html
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -62,6 +63,16 @@
         @Html.ActionLink("Create New", "Create")
     </p>
 }
+@foreach (var catagory in ViewBag.CatagoriyId)
+{
+    <div class="col-lg-2">
+        <p>
+            catagory
+        </p>
+    </div>
+}
+<br/>
+<br/>
 <div class="bs-docs-section">
     <div class="row">
             @using (Html.BeginForm("Index", "Items", FormMethod.Get))

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -14,12 +15,21 @@ namespace QualityCaps.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Items
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString,string currentCatagory, int? page)
         {
+            ViewBag.CurrentCatagory = string.IsNullOrWhiteSpace(currentCatagory) ? "All" : currentCatagory;
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
-
+            var catagories = new List<string>();
+            var catagoriyId = new List<int>();
+            foreach (var catagory in db.Catagories)
+            {
+                catagories.Add(catagory.Name);
+                catagoriyId.Add(catagory.ID);
+            }
+            ViewBag.Catagories = catagories;
+            ViewBag.CatagoriyId = catagoriyId;
             if (searchString != null)
             {
                 page = 1;
