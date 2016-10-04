@@ -26,11 +26,13 @@ namespace QualityCaps.Controllers
             return View(viewModel);
         }
 
+        //
+        // POST: /Store/RemoveAllItems/5
+
         public ActionResult RemoveAllItems()
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
             cart.EmptyCart();
-            var results = new ShoppingCartViewModel();
             return RedirectToAction("Index");
         }
 

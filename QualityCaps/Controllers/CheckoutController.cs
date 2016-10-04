@@ -47,11 +47,10 @@ namespace QualityCaps.Controllers
         {
             ViewBag.CreditCardTypes = CreditCardTypes;
             string result =  values[9];
-            
+            var cart = ShoppingCart.GetCart(this.HttpContext);
             var order = new Order();
             TryUpdateModel(order);
             order.CreditCard = result;
-
             try
             {
                     order.Username = User.Identity.Name;
@@ -59,7 +58,7 @@ namespace QualityCaps.Controllers
                     var userEmail = storeDB.Users.Find(currentUserId).Email;
                     order.Email = userEmail;
                     order.OrderDate = DateTime.Now;
-                    
+                    order.Total = cart.GetTotal();
                     if (order.SaveInfo && !order.Username.Equals(" "))
                     {
                         
@@ -89,7 +88,7 @@ namespace QualityCaps.Controllers
                     storeDB.Orders.Add(order);
                     await storeDB.SaveChangesAsync();
                     //Process the order
-                    var cart = ShoppingCart.GetCart(this.HttpContext);
+                    cart = ShoppingCart.GetCart(this.HttpContext);
                     order = cart.CreateOrder(order);
 
 
