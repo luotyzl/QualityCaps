@@ -160,5 +160,6 @@ C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\OpenOrderFramew
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\OpenOrderFramework.Migrations.currentv89.resources
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\OpenOrderFramework.Migrations.updatedentity.resources
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\OpenOrderFramework.Migrations.currentv88.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.addcolumn.resources
+C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.removecreditcard.resources
+C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.csprojResolveAssemblyReference.cache

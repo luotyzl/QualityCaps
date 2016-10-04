@@ -50,7 +50,6 @@ namespace QualityCaps.Controllers
             var cart = ShoppingCart.GetCart(this.HttpContext);
             var order = new Order();
             TryUpdateModel(order);
-            order.CreditCard = result;
             try
             {
                     order.Username = User.Identity.Name;

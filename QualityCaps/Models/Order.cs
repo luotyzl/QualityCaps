@@ -56,21 +56,6 @@ namespace QualityCaps.Models
         [StringLength(24)]
         public string Phone { get; set; }
 
-        [Display(Name = "Experation Date")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime Experation { get; set; }
-
-        [Display(Name = "Credit Card")]
-        [NotMapped]
-        [Required]
-        [DataType(DataType.CreditCard)]
-        public String CreditCard { get; set; }
-
-        [Display(Name = "Credit Card Type")]
-        [NotMapped]
-        public String CcType { get; set; }
-
         public bool SaveInfo { get; set; }
 
 
@@ -94,8 +79,6 @@ namespace QualityCaps.Models
             bob.Append("<p>Name: " + order.FirstName + " " + order.LastName + "<br>");
             bob.Append("Address: " + order.Address + " " + order.City + " " + order.State + " " + order.PostalCode + "<br>");
             bob.Append("Contact: " + order.Email + "     " + order.Phone + "</p>");
-            bob.Append("<p>Charge: " + order.CreditCard + " " + order.Experation.ToString("dd-MM-yyyy") + "</p>");
-            bob.Append("<p>Credit Card Type: " + order.CcType + "</p>");
 
             bob.Append("<br>").AppendLine();
             bob.Append("<Table>").AppendLine();

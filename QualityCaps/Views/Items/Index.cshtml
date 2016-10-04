@@ -105,6 +105,9 @@
             @Html.ActionLink("Item Price", "Index", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
+            Color
+        </th>
+        <th>
             Picture
         </th>
         <th></th>
@@ -124,6 +127,19 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <div class="form-group">
+                    <label for="select" class="col-lg-2 control-label">Credit Card Type</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="select">
+                            @foreach (var ca in ViewBag.Catagories)
+                            {
+                                <option>@ca</option>
+                            }
+                        </select>
+                    </div>
+                </div>
             </td>
             <td>
                 <img src="@Url.Action("RenderImage", new {id = item.ID})" style="width: 100px; height: 100px" />

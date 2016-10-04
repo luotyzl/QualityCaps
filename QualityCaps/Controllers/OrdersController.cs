@@ -119,11 +119,13 @@ namespace QualityCaps.Controllers
         // POST: Orders/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(Order order)
+        public async Task<ActionResult> Edit(int id, Order newOrder)
         {
+            Order order = await db.Orders.FindAsync(id);
+            
             if (ModelState.IsValid)
             {
-                db.Entry(order).State = EntityState.Modified;
+                db.Entry(newOrder).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
