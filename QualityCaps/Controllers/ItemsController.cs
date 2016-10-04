@@ -30,10 +30,12 @@ namespace QualityCaps.Controllers
                 catagories.Add(catagory.ID + catagory.Name);
             }
             ViewBag.Catagories = catagories;
+            
             if (searchString != null)
             {
                 page = 1;
             }
+            
             else
             {
                 searchString = currentFilter;
@@ -86,6 +88,12 @@ namespace QualityCaps.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            var colors = new List<string>();
+            foreach (var color in db.Colors)
+            {
+                colors.Add(color.Name);
+            }
+            ViewBag.Colors = colors;
             Item item = await db.Items.FindAsync(id);
             if (item == null)
             {

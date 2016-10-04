@@ -39,7 +39,7 @@ namespace QualityCaps.Controllers
         //
         // GET: /Store/AddToCart/5
         [HttpPost]
-        public ActionResult AddToCart(int id)
+        public ActionResult AddToCart(int id,string color)
         {
             // Retrieve the item from the database
             var addedItem = storeDB.Items
