@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using QualityCaps.Models;
 using PagedList;
@@ -51,11 +54,30 @@ namespace QualityCaps.Controllers
                     break;
             }
 
-            int pageSize = 3;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(orders.ToPagedList(pageNumber, pageSize));
 
             //return View(await db.Orders.ToListAsync());
         }
+
+        // GET: Orders/Details/5
+        public async Task<ActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = await db.Orders.FindAsync(id);
+            var orderDetails = db.OrderDetails.Where(x => x.OrderId == id);
+
+            order.OrderDetails = await orderDetails.ToListAsync();
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
+
     }
 }

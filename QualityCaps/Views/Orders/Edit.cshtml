@@ -1,4 +1,5 @@
-﻿@model QualityCaps.Models.Order
+﻿@using Microsoft.Ajax.Utilities
+@model QualityCaps.Models.Order
 
 @{
     ViewBag.Title = "Edit";
@@ -97,6 +98,12 @@
             </div>
         </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" style="height: 200%">
+                @Html.DropDownList("Status", new List<SelectListItem> { new SelectListItem { Text = "Waiting", Value = "Waiting", Selected = true }, new SelectListItem { Text = "Shipped", Value = "Shipped" } }, new { @class = "form-inline" })
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

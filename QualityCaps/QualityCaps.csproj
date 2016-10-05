@@ -244,6 +244,10 @@
     <Compile Include="Migrations\201610042317582_addcolumn1.Designer.cs">
       <DependentUpon>201610042317582_addcolumn1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610050026085_addcolorinorderdetail.cs" />
+    <Compile Include="Migrations\201610050026085_addcolorinorderdetail.Designer.cs">
+      <DependentUpon>201610050026085_addcolorinorderdetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -402,6 +406,7 @@
     <Content Include="Views\Colors\Edit.cshtml" />
     <Content Include="Views\Colors\Index.cshtml" />
     <Content Include="Views\MyOrders\Index.cshtml" />
+    <Content Include="Views\MyOrders\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -441,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610042317582_addcolumn1.resx">
       <DependentUpon>201610042317582_addcolumn1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610050026085_addcolorinorderdetail.resx">
+      <DependentUpon>201610050026085_addcolorinorderdetail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

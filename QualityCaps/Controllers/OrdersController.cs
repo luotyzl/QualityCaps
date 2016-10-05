@@ -55,7 +55,7 @@ namespace QualityCaps.Controllers
                     break;
             }
 
-            int pageSize = 3;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(orders.ToPagedList(pageNumber, pageSize));
 
@@ -122,10 +122,20 @@ namespace QualityCaps.Controllers
         public async Task<ActionResult> Edit(int id, Order newOrder)
         {
             Order order = await db.Orders.FindAsync(id);
-            
+            order.FirstName = newOrder.FirstName;
+            order.LastName = newOrder.LastName;
+            order.Address = newOrder.Address;
+            order.Country = newOrder.Country;
+            order.City = newOrder.City;
+            order.PostalCode = newOrder.PostalCode;
+            order.Phone = newOrder.Phone;
+            order.Email = newOrder.Email;
+            order.SaveInfo = newOrder.SaveInfo;
+            order.Status = newOrder.Status;
             if (ModelState.IsValid)
             {
-                db.Entry(newOrder).State = EntityState.Modified;
+                //order.Status = status;
+                db.Entry(order).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

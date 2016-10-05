@@ -67,6 +67,8 @@ namespace QualityCaps.Models
 
         [ScaffoldColumn(false)]
         public decimal Total { get; set; }
+
+        public string Status { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
 
        

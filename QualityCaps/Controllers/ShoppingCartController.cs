@@ -7,8 +7,7 @@ namespace QualityCaps.Controllers
 {
     public class ShoppingCartController : Controller
     {
-
-        ApplicationDbContext storeDB = new ApplicationDbContext();
+        readonly ApplicationDbContext _storeDb = new ApplicationDbContext();
         //
         // GET: /ShoppingCart/
         public ActionResult Index()
@@ -42,7 +41,7 @@ namespace QualityCaps.Controllers
         public ActionResult AddToCart(int id,string color)
         {
             // Retrieve the item from the database
-            var addedItem = storeDB.Items
+            var addedItem = _storeDb.Items
                 .Single(item => item.ID == id);
 
             // Add it to the shopping cart
@@ -77,7 +76,7 @@ namespace QualityCaps.Controllers
             // Get the name of the item to display confirmation
 
             // Get the name of the album to display confirmation
-            string itemName = storeDB.Items
+            string itemName = _storeDb.Items
                 .Single(item => item.ID == id).Name;
 
             // Remove from cart

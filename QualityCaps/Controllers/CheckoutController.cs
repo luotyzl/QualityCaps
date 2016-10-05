@@ -36,56 +36,55 @@ namespace QualityCaps.Controllers
         [HttpPost]
         public async Task<ActionResult> AddressAndPayment(FormCollection values)
         {
-            string result =  values[8];
             var cart = ShoppingCart.GetCart(this.HttpContext);
             var order = new Order();
             TryUpdateModel(order);
             try
             {
-                    order.Username = User.Identity.Name;
-                    var currentUserId = User.Identity.GetUserId();
-                    var userEmail = _storeDb.Users.Find(currentUserId).Email;
-                    order.Email = userEmail;
-                    order.OrderDate = DateTime.Now;
-                    order.Total = cart.GetTotal();
-                    if (order.SaveInfo && !order.Username.Equals(" "))
-                    {
-                        
-                        var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-                        var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
-                        var ctx = store.Context;
-                        var currentUser = manager.FindById(User.Identity.GetUserId());
+                order.Username = User.Identity.Name;
+                var currentUserId = User.Identity.GetUserId();
+                var userEmail = _storeDb.Users.Find(currentUserId).Email;
+                order.Email = userEmail;
+                order.OrderDate = DateTime.Now;
+                order.Total = cart.GetTotal();
+                order.Status = "Waiting";
+                if (order.SaveInfo && !order.Username.Equals(" "))
+                {
+                    var manager =
+                        new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                    var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
+                    var ctx = store.Context;
+                    var currentUser = manager.FindById(User.Identity.GetUserId());
 
-                        currentUser.Address = order.Address;
-                        currentUser.City = order.City;
-                        currentUser.Country = order.Country;
-                        currentUser.State = order.State;
-                        currentUser.PhoneNumber = order.Phone;
-                        currentUser.PostalCode = order.PostalCode;
-                        currentUser.FirstName = order.FirstName;
+                    currentUser.Address = order.Address;
+                    currentUser.City = order.City;
+                    currentUser.Country = order.Country;
+                    currentUser.State = order.State;
+                    currentUser.PhoneNumber = order.Phone;
+                    currentUser.PostalCode = order.PostalCode;
+                    currentUser.FirstName = order.FirstName;
 
-                        //Save this back
-                        //http://stackoverflow.com/questions/20444022/updating-user-data-asp-net-identity
-                        //var result = await UserManager.UpdateAsync(currentUser);
-                        await ctx.SaveChangesAsync();
+                    //Save this back
+                    //http://stackoverflow.com/questions/20444022/updating-user-data-asp-net-identity
+                    //var result = await UserManager.UpdateAsync(currentUser);
+                    await ctx.SaveChangesAsync();
 
-                        await _storeDb.SaveChangesAsync();
-                    }
-                    
-
-                    //Save Order
-                    _storeDb.Orders.Add(order);
                     await _storeDb.SaveChangesAsync();
-                    //Process the order
-                    cart = ShoppingCart.GetCart(this.HttpContext);
-                    order = cart.CreateOrder(order);
+                }
+
+                //Save Order
+                _storeDb.Orders.Add(order);
+                await _storeDb.SaveChangesAsync();
+                //Process the order
+                cart = ShoppingCart.GetCart(HttpContext);
+                order = cart.CreateOrder(order);
 
 
+                SendOrderMessage(order.FirstName, "New Order: " + order.OrderId, order.ToString(order),
+                    _appConfig.OrderEmail);
 
-                    CheckoutController.SendOrderMessage(order.FirstName, "New Order: " + order.OrderId,order.ToString(order), _appConfig.OrderEmail);
-
-                    return RedirectToAction("Complete",
-                        new { id = order.OrderId });
+                return RedirectToAction("Complete",
+                    new {id = order.OrderId});
                 
             }
             catch(DbEntityValidationException e)

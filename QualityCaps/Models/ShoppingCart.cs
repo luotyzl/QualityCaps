@@ -8,7 +8,7 @@ namespace QualityCaps.Models
 {
     public partial class ShoppingCart
     {
-        ApplicationDbContext storeDB = new ApplicationDbContext();
+        readonly ApplicationDbContext _storeDb = new ApplicationDbContext();
         string ShoppingCartId { get; set; }
         public const string CartSessionKey = "CartId";
 
@@ -28,7 +28,7 @@ namespace QualityCaps.Models
         public int AddToCart(Item item,string color)
         {
             // Get the matching cart and item instances
-            var cartItem = storeDB.Carts.SingleOrDefault(
+            var cartItem = _storeDb.Carts.SingleOrDefault(
                 c => c.CartId == ShoppingCartId
                 && c.ItemId == item.ID && c.Color == color);
 
@@ -43,7 +43,7 @@ namespace QualityCaps.Models
                     Count = 1,
                     DateCreated = DateTime.Now
                 };
-                storeDB.Carts.Add(cartItem);
+                _storeDb.Carts.Add(cartItem);
             }
             else
             {
@@ -52,7 +52,7 @@ namespace QualityCaps.Models
                 cartItem.Count++;
             }
             // Save changes
-            storeDB.SaveChanges();
+            _storeDb.SaveChanges();
 
             return cartItem.Count;
         }
@@ -63,7 +63,7 @@ namespace QualityCaps.Models
 
             // Get the cart
 
-            var cartItem = storeDB.Carts.Single(
+            var cartItem = _storeDb.Carts.Single(
                 cart => cart.CartId == ShoppingCartId
                 && cart.ItemId == id);
 
@@ -79,37 +79,37 @@ namespace QualityCaps.Models
                 }
                 else
                 {
-                    storeDB.Carts.Remove(cartItem);
+                    _storeDb.Carts.Remove(cartItem);
                 }
                 // Save changes
-                storeDB.SaveChanges();
+                _storeDb.SaveChanges();
             }
             return itemCount;
         }
 
         public void EmptyCart()
         {
-            var cartItems = storeDB.Carts.Where(
+            var cartItems = _storeDb.Carts.Where(
                 cart => cart.CartId == ShoppingCartId);
 
             foreach (var cartItem in cartItems)
             {
-                storeDB.Carts.Remove(cartItem);
+                _storeDb.Carts.Remove(cartItem);
             }
             // Save changes
-            storeDB.SaveChanges();
+            _storeDb.SaveChanges();
         }
 
         public List<Cart> GetCartItems()
         {
-            return storeDB.Carts.Where(
+            return _storeDb.Carts.Where(
                 cart => cart.CartId == ShoppingCartId).ToList();
         }
 
         public int GetCount()
         {
             // Get the count of each item in the cart and sum them up
-            int? count = (from cartItems in storeDB.Carts
+            int? count = (from cartItems in _storeDb.Carts
                           where cartItems.CartId == ShoppingCartId
                           select (int?)cartItems.Count).Sum();
             // Return 0 if all entries are null
@@ -120,7 +120,7 @@ namespace QualityCaps.Models
             // Multiply item price by count of that item to get 
             // the current price for each of those items in the cart
             // sum all item price totals to get the cart total
-            decimal? total = (from cartItems in storeDB.Carts
+            decimal? total = (from cartItems in _storeDb.Carts
                               where cartItems.CartId == ShoppingCartId
                               select (int?)cartItems.Count *
                               cartItems.Item.Price).Sum();
@@ -132,7 +132,7 @@ namespace QualityCaps.Models
             // Multiply item price by count of that item to get 
             // the current price for each of those items in the cart
             // sum all item price totals to get the cart total
-            decimal? total = (from cartItems in storeDB.Carts
+            decimal? total = (from cartItems in _storeDb.Carts
                               where cartItems.CartId == ShoppingCartId
                               select (int?)cartItems.Count *
                               cartItems.Item.Price * (decimal)1.15).Sum();
@@ -154,20 +154,22 @@ namespace QualityCaps.Models
                 {
                     ItemId = item.ItemId,
                     OrderId = order.OrderId,
+                    Color = item.Color,
                     UnitPrice = item.Item.Price,
-                    Quantity = item.Count
+                    Quantity = item.Count,
+                    TotalPrice = orderTotal,
                 };
                 // Set the order total of the shopping cart
                 orderTotal += (item.Count * item.Item.Price);
                 order.OrderDetails.Add(orderDetail);
-                storeDB.OrderDetails.Add(orderDetail);
+                _storeDb.OrderDetails.Add(orderDetail);
 
             }
             // Set the order's total to the orderTotal count
             order.Total = orderTotal;
 
             // Save the order
-            storeDB.SaveChanges();
+            _storeDb.SaveChanges();
             // Empty the shopping cart
             EmptyCart();
             // Return the OrderId as the confirmation number
@@ -199,14 +201,14 @@ namespace QualityCaps.Models
         // be associated with their username
         public void MigrateCart(string userName)
         {
-            var shoppingCart = storeDB.Carts.Where(
+            var shoppingCart = _storeDb.Carts.Where(
                 c => c.CartId == ShoppingCartId);
 
             foreach (Cart item in shoppingCart)
             {
                 item.CartId = userName;
             }
-            storeDB.SaveChanges();
+            _storeDb.SaveChanges();
         }
     }
 }
