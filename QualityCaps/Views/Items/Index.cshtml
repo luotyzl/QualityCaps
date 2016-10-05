@@ -127,7 +127,6 @@
                    data-id="@item.ID" data-toggle="modal" data-target="#myModal">
                     Add to cart
                 </a>
-                <!--@Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new {id = item.ID}, new {htmlAttributes = new {@data_toggle = "modal", @data_target = "#myModal"}})--> |
                 @Html.ActionLink("Details", "Details", new { id = item.ID })
                 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                 {

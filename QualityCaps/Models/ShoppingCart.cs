@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NLog.Fluent;
 
 namespace QualityCaps.Models
 {
     public partial class ShoppingCart
     {
+        private readonly decimal _gst = new decimal(1.15);
         readonly ApplicationDbContext _storeDb = new ApplicationDbContext();
         string ShoppingCartId { get; set; }
         public const string CartSessionKey = "CartId";
@@ -57,36 +59,6 @@ namespace QualityCaps.Models
             return cartItem.Count;
         }
 
-        public int RemoveFromCart(int id)
-        {
-
-
-            // Get the cart
-
-            var cartItem = _storeDb.Carts.Single(
-                cart => cart.CartId == ShoppingCartId
-                && cart.ItemId == id);
-
-
-            int itemCount = 0;
-
-            if (cartItem != null)
-            {
-                if (cartItem.Count > 1)
-                {
-                    cartItem.Count--;
-                    itemCount = cartItem.Count;
-                }
-                else
-                {
-                    _storeDb.Carts.Remove(cartItem);
-                }
-                // Save changes
-                _storeDb.SaveChanges();
-            }
-            return itemCount;
-        }
-
         public void EmptyCart()
         {
             var cartItems = _storeDb.Carts.Where(
@@ -132,12 +104,13 @@ namespace QualityCaps.Models
             // Multiply item price by count of that item to get 
             // the current price for each of those items in the cart
             // sum all item price totals to get the cart total
+            
             decimal? total = (from cartItems in _storeDb.Carts
                               where cartItems.CartId == ShoppingCartId
                               select (int?)cartItems.Count *
-                              cartItems.Item.Price * (decimal)1.15).Sum();
+                              cartItems.Item.Price * _gst).Sum();
 
-            return total ?? decimal.Zero;
+            return Math.Round(total ?? decimal.Zero , 2);
         }
 
         public Order CreateOrder(Order order)
