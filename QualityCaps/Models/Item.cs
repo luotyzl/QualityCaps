@@ -35,7 +35,7 @@ namespace QualityCaps.Models
         [Range(0.01, 999.99,ErrorMessage = "Price must be between 0.01 and 999.99")]
         public decimal Price { get; set; }
 
-        public byte[] InternalImage { get; set; }
+        public byte[] Image { get; set; }
 
         [Display(Name = "Local file")]
         [NotMapped]
@@ -56,7 +56,7 @@ namespace QualityCaps.Models
                         return;
 
                     value.InputStream.CopyTo(target);
-                    InternalImage = target.ToArray();
+                    Image = target.ToArray();
                 }
                 catch (Exception ex)
                 {
@@ -65,10 +65,6 @@ namespace QualityCaps.Models
                 }
             }
         }
-
-        [DisplayName("Item Picture URL")]
-        [StringLength(1024)]
-        public string ItemPictureUrl { get; set; }
 
         public virtual Catagorie Catagorie { get; set; }
         public virtual Supplier Supplier { get; set; }

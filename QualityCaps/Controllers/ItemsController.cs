@@ -72,7 +72,7 @@ namespace QualityCaps.Controllers
                     break;
             }
 
-            int pageSize = 3;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View( items.ToPagedList(pageNumber, pageSize));
 
@@ -160,7 +160,10 @@ namespace QualityCaps.Controllers
                 item.Name = newItem.Name;
                 item.CatagorieId = newItem.CatagorieId;
                 item.Price = newItem.Price;
-                item.ItemPictureUrl = newItem.ItemPictureUrl;
+                if (newItem.Image != null)
+                {
+                    item.Image = newItem.Image;
+                }
             }
             if (ModelState.IsValid)
             {
@@ -205,7 +208,7 @@ namespace QualityCaps.Controllers
         {
             Item item = await db.Items.FindAsync(id);
 
-            byte[] photoBack = item.InternalImage;
+            byte[] photoBack = item.Image;
 
             return File(photoBack, "image/png");
         }

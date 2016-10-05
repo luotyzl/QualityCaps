@@ -164,4 +164,4 @@ C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Mig
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.removecreditcard.resources
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.addcolumn1.resources
 C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.addcolorinorderdetail.resources
-C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\QualityCaps\QualityCaps\obj\Debug\QualityCaps.Migrations.changecolumn.resources

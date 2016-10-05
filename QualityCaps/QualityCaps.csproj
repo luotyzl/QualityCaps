@@ -248,6 +248,10 @@
     <Compile Include="Migrations\201610050026085_addcolorinorderdetail.Designer.cs">
       <DependentUpon>201610050026085_addcolorinorderdetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610050322052_change column.cs" />
+    <Compile Include="Migrations\201610050322052_change column.Designer.cs">
+      <DependentUpon>201610050322052_change column.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -449,6 +453,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610050026085_addcolorinorderdetail.resx">
       <DependentUpon>201610050026085_addcolorinorderdetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610050322052_change column.resx">
+      <DependentUpon>201610050322052_change column.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
