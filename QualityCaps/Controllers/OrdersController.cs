@@ -17,7 +17,7 @@ namespace QualityCaps.Controllers
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.IdSortParm = String.IsNullOrEmpty(sortOrder) || sortOrder == "id" ? "id_desc" : "id";
             ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
 
             if (searchString != null)
@@ -41,8 +41,11 @@ namespace QualityCaps.Controllers
             }
             switch (sortOrder)
             {
-                case "name_desc":
-                    orders = orders.OrderByDescending(s => s.FirstName);
+                case "id":
+                    orders = orders.OrderBy(s => s.OrderId);
+                    break;
+                case "id_desc":
+                    orders = orders.OrderByDescending(s => s.OrderId);
                     break;
                 case "Price":
                     orders = orders.OrderBy(s => s.Total);
@@ -50,8 +53,8 @@ namespace QualityCaps.Controllers
                 case "price_desc":
                     orders = orders.OrderByDescending(s => s.Total);
                     break;
-                default:  // Name ascending 
-                    orders = orders.OrderBy(s => s.FirstName);
+                default:  // Id ascending 
+                    orders = orders.OrderByDescending(s => s.OrderId);
                     break;
             }
 

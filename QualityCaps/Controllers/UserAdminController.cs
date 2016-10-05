@@ -134,8 +134,9 @@ namespace QualityCaps.Controllers
 
             return View(new EditUserViewModel()
             {
-                Id = user.Id,
+                Id = id,
                 Email = user.Email,
+                Phone = user.Phone,
                 IsAvailable = user.IsAvailable,
                 RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
                 {
@@ -151,7 +152,7 @@ namespace QualityCaps.Controllers
         // POST: /Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Email,Id")] EditUserViewModel editUser, params string[] selectedRole)
+        public async Task<ActionResult> Edit([Bind(Include = "Email,Id,Phone,IsAvailable")] EditUserViewModel editUser, params string[] selectedRole)
         {
             if (ModelState.IsValid)
             {
@@ -163,6 +164,7 @@ namespace QualityCaps.Controllers
 
                 user.UserName = editUser.Email;
                 user.Email = editUser.Email;
+                user.Phone = editUser.Phone;
                 user.IsAvailable = editUser.IsAvailable;
                 var userRoles = await UserManager.GetRolesAsync(user.Id);
 
