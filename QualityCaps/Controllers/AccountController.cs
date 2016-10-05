@@ -331,13 +331,13 @@ namespace QualityCaps.Controllers
             return RedirectToAction("Register", "Account");
         }
 
-        public async Task<bool> SendEmailAsync(string id,string Email)
+        public bool SendEmail(string id, string Email)
         {
             MailAddress toAddress = new MailAddress(Email);
             MailAddress fromAddress = new MailAddress("wad@unitec.com");
             MailMessage message = new MailMessage(fromAddress, toAddress);
             message.Subject = "Registration Confirm";
-            message.Body = "Your registration is complete! Thank you!" +"\r\n" +"Your UserId is " + id;
+            message.Body = "Your registration is complete! Thank you!" + "\r\n" + "Your UserId is " + id;
             SmtpClient mailClient = new SmtpClient();
 
             try

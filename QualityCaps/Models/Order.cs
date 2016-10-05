@@ -105,8 +105,7 @@ namespace QualityCaps.Models
             bob.Append("</Table>");
             bob.Append("<b>");
             // Display footer 
-            string footer = String.Format("{0,-12}{1,12}\n",
-                                          "Total", order.Total);
+            string footer = $"{"Total",-12}{order.Total,12}\n";
             bob.Append(footer).AppendLine();
             bob.Append("</b>");
 

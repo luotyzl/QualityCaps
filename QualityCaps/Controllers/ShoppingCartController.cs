@@ -47,9 +47,9 @@ namespace QualityCaps.Controllers
 
             // Add it to the shopping cart
             var cart = ShoppingCart.GetCart(this.HttpContext);
-
+            if (string.IsNullOrWhiteSpace(color))
+                color = "UnSelected";
             int count = cart.AddToCart(addedItem,color);
-
             // Display the confirmation message
             var results = new ShoppingCartRemoveViewModel
             {

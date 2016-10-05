@@ -7,14 +7,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using QualityCaps.Configuration;
 using QualityCaps.Models;
 using RestSharp;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using NLog.Fluent;
 using RestSharp.Authenticators;
 
 namespace QualityCaps.Controllers
@@ -22,17 +16,14 @@ namespace QualityCaps.Controllers
     [Authorize]
     public class CheckoutController : Controller
     {
-        ApplicationDbContext storeDB = new ApplicationDbContext();
-        AppConfigurations appConfig = new AppConfigurations();
-
-        public List<String> CreditCardTypes { get { return appConfig.CreditCardType;} }
+        readonly ApplicationDbContext _storeDb = new ApplicationDbContext();
+        readonly AppConfigurations _appConfig = new AppConfigurations();
 
         //
         // GET: /Checkout/AddressAndPayment
         public ActionResult AddressAndPayment()
         {
-            ViewBag.CreditCardTypes = CreditCardTypes;
-            var previousOrder = storeDB.Orders.FirstOrDefault(x => x.Username == User.Identity.Name);
+            var previousOrder = _storeDb.Orders.FirstOrDefault(x => x.Username == User.Identity.Name);
 
             if (previousOrder != null)
                 return View(previousOrder);
@@ -45,8 +36,7 @@ namespace QualityCaps.Controllers
         [HttpPost]
         public async Task<ActionResult> AddressAndPayment(FormCollection values)
         {
-            ViewBag.CreditCardTypes = CreditCardTypes;
-            string result =  values[9];
+            string result =  values[8];
             var cart = ShoppingCart.GetCart(this.HttpContext);
             var order = new Order();
             TryUpdateModel(order);
@@ -54,7 +44,7 @@ namespace QualityCaps.Controllers
             {
                     order.Username = User.Identity.Name;
                     var currentUserId = User.Identity.GetUserId();
-                    var userEmail = storeDB.Users.Find(currentUserId).Email;
+                    var userEmail = _storeDb.Users.Find(currentUserId).Email;
                     order.Email = userEmail;
                     order.OrderDate = DateTime.Now;
                     order.Total = cart.GetTotal();
@@ -79,20 +69,20 @@ namespace QualityCaps.Controllers
                         //var result = await UserManager.UpdateAsync(currentUser);
                         await ctx.SaveChangesAsync();
 
-                        await storeDB.SaveChangesAsync();
+                        await _storeDb.SaveChangesAsync();
                     }
                     
 
                     //Save Order
-                    storeDB.Orders.Add(order);
-                    await storeDB.SaveChangesAsync();
+                    _storeDb.Orders.Add(order);
+                    await _storeDb.SaveChangesAsync();
                     //Process the order
                     cart = ShoppingCart.GetCart(this.HttpContext);
                     order = cart.CreateOrder(order);
 
 
 
-                    CheckoutController.SendOrderMessage(order.FirstName, "New Order: " + order.OrderId,order.ToString(order), appConfig.OrderEmail);
+                    CheckoutController.SendOrderMessage(order.FirstName, "New Order: " + order.OrderId,order.ToString(order), _appConfig.OrderEmail);
 
                     return RedirectToAction("Complete",
                         new { id = order.OrderId });
@@ -110,7 +100,7 @@ namespace QualityCaps.Controllers
         public ActionResult Complete(int id)
         {
             // Validate customer owns this order
-            bool isValid = storeDB.Orders.Any(
+            bool isValid = _storeDb.Orders.Any(
                 o => o.OrderId == id &&
                 o.Username == User.Identity.Name);
 
