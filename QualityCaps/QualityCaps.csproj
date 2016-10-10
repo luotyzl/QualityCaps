@@ -273,13 +273,17 @@
     <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\banner_jd.css" />
     <Content Include="Content\BarChart.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\card.css" />
+    <Content Include="Content\common_o2.1-pretzel.css" />
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\PagedList1.css" />
+    <Content Include="PageNotFound.html" />
+    <Content Include="Error.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -291,6 +295,7 @@
     <Content Include="Images\cap1.jpg" />
     <Content Include="Images\cap2.jpg" />
     <Content Include="Images\cap3.png" />
+    <Content Include="Images\Icecream_girl.gif" />
     <Content Include="Images\Logo.png" />
     <Content Include="Images\NewLogo.jpg" />
     <Content Include="Images\next_pic.png" />

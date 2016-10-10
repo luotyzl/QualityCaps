@@ -1,39 +1,25 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-<div class="jumbotron">
+<link href="./Content/banner_jd.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./Scripts/jquery-2.1.1.min.js"></script>
+<script src="./Scripts/banner_jd02.js" type="text/javascript"></script>  
+<div>
     <h1>Quality Caps</h1>
     <p class="lead">The best cap online shop in New Zealand</p>
-    <p><button type="button" class="btn btn-primary btn-large" onclick="location.href='@Url.Action("Index", "Items")'">Order Some Caps &raquo;</button></p>
+    <div class="play_box">
+        <div class="imgBox">
+            <img alt="" src="./Images/banner1.jpg" />
+            <img alt="" src="./Images/banner2.jpg" />
+            <img alt="" src="./Images/banner3.jpg" />
+            <img alt="" src="./Images/banner4.png" />
+        </div>
+
+        <span class="prev" title="Last"></span>
+        <span class="next" title="Next"></span>
+
+    </div>
+    <p><button type="button" class="btn btn-primary btn-large" onclick="location.href = '@Url.Action("Index", "Items")'">Start Shopping &raquo;</button>
+    </p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-
-    </div>
-    <div class="col-md-4">
-
-    </div>
-    <div class="col-md-4">
-
-    </div>
-    <div class="col-md-4">
-
-    </div>
-    <div class="col-md-4">
-
-    </div>
-    <div class="col-md-4">
-
-    </div>
-    <div class="col-md-4">
-
-    </div>
-    <div class="col-md-4">
-
-    </div>
-
-
-
-</div>

@@ -569,7 +569,6 @@ Card = (function() {
       };
     })(this));
     if (this.options.formatting) {
-      this.$numberInput.payment('formatCardNumber');
       this.$expiryInput.payment('formatCardExpiry');
       this.$cvcInput.payment('formatCardCVC');
     }

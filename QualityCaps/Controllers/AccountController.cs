@@ -159,7 +159,7 @@ namespace QualityCaps.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-//                    await SendEmailAsync(user.Id, user.Email);
+                    SendEmail(user.Id, user.Email);
                     //ViewBag.Link = callbackUrl;
                     return View("DisplayEmail");
 

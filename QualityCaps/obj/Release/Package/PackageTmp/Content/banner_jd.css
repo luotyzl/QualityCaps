@@ -1,0 +1,8 @@
+﻿.play_box{margin:0 auto;position:relative;}
+.imgBox{width:10000px;height:353px;}
+.imgBox img{float:left;position:relative;}
+.play_box .prev{background:url(../Images/prev_pic.png) no-repeat left 0;width:20px;height:40px;position:absolute;left:0;top:150px;cursor:pointer;display:none;}
+.play_box .next{background:url(../Images/next_pic.png) no-repeat left 0;width:20px;height:40px;position:absolute;right:0;top:150px;cursor:pointer;display:none;}
+.pic_btn_list{position:absolute;left:400px;bottom:8px;}
+.pic_btn_list li{float:left;width:8px;height:8px;background:url(../Images/pic_drep.png) no-repeat -11px 0;margin:0 5px;text-indent:-9999px;list-style-type:none;cursor:pointer;}
+.pic_btn_list li.ddd{background:url(../Images/pic_drep.png) no-repeat left 0;}

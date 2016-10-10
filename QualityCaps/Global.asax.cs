@@ -1,4 +1,5 @@
 ﻿using QualityCaps.Models;
+using System;
 using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
@@ -17,5 +18,23 @@ namespace QualityCaps
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Database.SetInitializer<ApplicationDbContext>(new ApplicationDbInitializer());
         }
+        void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError();
+            if (ex.Message.Contains("404"))
+            {
+                Session["ExceptionObject"] = ex;
+                Server.ClearError();
+                Server.Transfer("PageNotFound.html");
+            }
+            else
+            {
+                Session["ExceptionObject"] = ex;
+                Server.ClearError();
+                Server.Transfer("Error.html");
+
+            }
+        }
+
     }
 }

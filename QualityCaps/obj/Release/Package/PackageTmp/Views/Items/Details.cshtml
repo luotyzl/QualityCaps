@@ -12,9 +12,10 @@
         $(".AddLink").click(function () {
             // Get the id from the link
             var recordToAdd = $(this).attr("data-id");
+            var color = $("input[name='color']:checked").val();
             if (recordToAdd != '') {
                 // Perform the ajax post
-                $.post("/ShoppingCart/AddToCart", { "id": recordToAdd },
+                $.post("/ShoppingCart/AddToCart", { "id": recordToAdd, "color": color },
                     function (data) {
                         $('#cart-status').text(data.CartCount);
                     });
@@ -64,11 +65,25 @@
     </dl>
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Catagorie.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Catagorie.ID)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.Catagorie.Name)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Catagorie.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Supplier.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Supplier.Name)
         </dd>
 
         <dt>
@@ -88,11 +103,13 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ItemPictureUrl)
+            Color
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ItemPictureUrl)
+        <dd id="colorChoose">
+            @foreach (var color in ViewBag.Colors)
+            {
+                <label><input name="color" type="radio" value="@color" />@color</label>
+            }
         </dd>
 
     </dl>
@@ -100,8 +117,7 @@
 <p>
     <a href="#" class="AddLink"
        data-id="@Model.ID" data-toggle="modal" data-target="#myModal">
-        Add
-        to cart
+        Add to cart
     </a>
     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
     {

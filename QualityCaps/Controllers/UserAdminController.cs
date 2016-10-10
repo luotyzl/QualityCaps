@@ -162,7 +162,6 @@ namespace QualityCaps.Controllers
                     return HttpNotFound();
                 }
 
-                user.UserName = editUser.Email;
                 user.Email = editUser.Email;
                 user.Phone = editUser.Phone;
                 user.IsAvailable = editUser.IsAvailable;
